@@ -1,10 +1,24 @@
-<div class="jumbotron text-center">
-  {{#if user}}
-    Welcome {{user.local.email}}
-  {{else}}
-    <p>Login or Register</p>
-
-    <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-    <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-  {{/if}}
+{{#if user}}
+<div id="ch-tweet-form" class="clearfix well">
+  <form>
+    <div class="ch-section">
+      <textarea class="form-control" placeholder="Tweet here"></textarea>
+      <br />
+    </div>
+    <div id="ch-tweet-button" class="ch-section">
+      <input type="submit" class="btn btn-primary" value="Tweet">
+    </div>
+    <div id="limit" data-limit="<%= @tweet_limit %>">
+      <!--          <%= @tweet_limit %>-->
+    </div>
+  </form>
 </div>
+
+{{else}}
+<div class="jumbotron text-center">
+  <p>Login or Register</p>
+
+  <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+  <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+</div>
+{{/if}}
