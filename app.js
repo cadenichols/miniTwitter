@@ -26,7 +26,7 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({ secret: 'codinghouserocks', saveUninitialized: true, resave: false }));
+app.use(session({ secret: 'codinghouserocks', saveUninitialized: true, resave: true, cookie:{ maxAge: 1*24*60*60*1000 } }));
 
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
