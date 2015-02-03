@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular.js"></script>
+  </head>
+  <body ng-app="miniTwitter" ng-controller="TweetController">
+    <div class="container">
+
+      <div id="ch-tweet-form" class="clearfix well">
+
+        <form id="chTweetForm" method="POST" ng-submit="addTweet()">
+          <div class="ch-section">
+            <textarea class="form-control" name="tweet" placeholder="Tweet here" ng-model="tweet.newTweet"></textarea>
+            <br />
+          </div>
+          <div id="ch-tweet-button" class="ch-section">
+            <input type="submit" class="btn btn-primary" value="Tweet" ng-disabled="!tweetLengthOk()" />
+          </div>
+          <div id="limit" data-limit="" ng-class="{'redzone': !tweetLengthOk()}">
+            {{remainingCharacters()}}
+          </div>
+        </form>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6" ng-repeat="tweet in tweet.list">
+          <div class="text">{{tweet.text}}</div>
+        </div>
+      </div>
+
+    </div>
+    <script src="/javascripts/mini.js"></script>
+  </body>
+</html>
+
