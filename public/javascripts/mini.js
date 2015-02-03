@@ -4,24 +4,11 @@ mT.controller("TweetController", ['$scope', 'Tweet', function($scope, Tweet) {
 
   $scope.tweet = new Tweet();
 
-  $scope.addTweet = function() {
-    $scope.tweets.push({ text: $scope.tweet });
-    $scope.tweet = "";
-  };
-
-  $scope.tweetLengthOk = function() {
-    return $scope.tweet.length > 0 && $scope.tweet.length <= 140;
-  };
-
-  $scope.remainingCharacters = function() {
-    return 140 - $scope.tweet.length;
-  };
 }]);
-
 
 mT.factory("Tweet", [function() {
   var Tweet = function() {
-    this.newTweet = "";
+    this.message = "";
     this.list = [
       { 'text': 'This is the first tweet' },
       { 'text': 'This is the second tweet' },
@@ -30,8 +17,19 @@ mT.factory("Tweet", [function() {
     ];
   };
 
+  Tweet.prototype.tweetLengthOk = function() {
+    var length = this.message.length;
+    return length > 0 && length <= 140;
+  };
+
+  Tweet.prototype.remainingCharacters = function() {
+    return 140 -  this.message.length;
+  };
+
+  Tweet.prototype.addTweet = function() {
+    this.list.push({ text: this.message });
+    this.message = "";
+  };
+
   return Tweet;
 }]);
-
-
-

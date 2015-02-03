@@ -12,16 +12,16 @@
 
       <div id="ch-tweet-form" class="clearfix well">
 
-        <form id="chTweetForm" method="POST" ng-submit="addTweet()">
+        <form id="chTweetForm" method="POST" ng-submit="tweet.addTweet()">
           <div class="ch-section">
-            <textarea class="form-control" name="tweet" placeholder="Tweet here" ng-model="tweet.newTweet"></textarea>
+            <textarea class="form-control" name="tweet" placeholder="Tweet here" ng-model="tweet.message"></textarea>
             <br />
           </div>
           <div id="ch-tweet-button" class="ch-section">
-            <input type="submit" class="btn btn-primary" value="Tweet" ng-disabled="!tweetLengthOk()" />
+            <input type="submit" class="btn btn-primary" value="Tweet" ng-disabled="!tweet.tweetLengthOk()" />
           </div>
-          <div id="limit" data-limit="" ng-class="{'redzone': !tweetLengthOk()}">
-            {{remainingCharacters()}}
+          <div id="limit" data-limit="" ng-class="{'redzone': !tweet.tweetLengthOk()}">
+            {{tweet.remainingCharacters()}}
           </div>
         </form>
 
