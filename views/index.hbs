@@ -1,8 +1,9 @@
 {{#if user}}
   <div id="ch-tweet-form" class="clearfix well">
+    {{tweet}}
     <form id="chTweetForm" action="/tweets" method="POST">
       <div class="ch-section">
-        <textarea class="form-control" name="tweet" placeholder="Tweet here"></textarea>
+        <textarea class="form-control" name="tweet" placeholder="Tweet here" ng-model="tweet"></textarea>
         <br />
       </div>
       <div id="ch-tweet-button" class="ch-section">
@@ -11,6 +12,7 @@
       <div id="limit" data-limit="">
       </div>
     </form>
+    {{tweet}}
   </div>
 {{else}}
   <div class="jumbotron text-center">
